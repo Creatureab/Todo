@@ -1,9 +1,21 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 const LogoutPage = () => {
-    return (
-        <div>
-            <a href="/logout">Logout</a>
-            <button onClick={() => { }}>Logout</button>
-        </div>
-    )
-}
-export default LogoutPage
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    // clear auth (example)
+    localStorage.removeItem("token");
+
+    router.push("/login");
+  };
+
+  return (
+    <button onClick={handleLogout}>
+      Logout
+    </button>
+  );
+};
+
+export default LogoutPage;
